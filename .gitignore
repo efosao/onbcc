@@ -1,6 +1,10 @@
 node_modules
 
+# ignore build artifacts
 /.cache
 /build
 /public/build
 .env
+
+# ignore generated styles
+styles.css
