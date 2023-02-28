@@ -45,7 +45,7 @@ function CommentForm(props: PropTypes) {
       <input name="id" type="hidden" value={uuidv4()} />
       <input name="pageId" type="hidden" value={props.pageId} />
       <input name="locX" type="hidden" value={props.locX} />
-      <input name="locY" type="hidden" value={props.locY} />\{" "}
+      <input name="locY" type="hidden" value={props.locY} />{" "}
       <button className="bg-green-300 mx-1 p-1 rounded" type="submit">
         Add
       </button>
