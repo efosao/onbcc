@@ -1,3 +1,4 @@
+import { Form, useTransition } from "@remix-run/react";
 import { useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -18,20 +19,26 @@ function CommentForm(props: PropTypes) {
     }
   }
 
-  function abort() {
+  function cleanup() {
     clearComment();
     props.onClose();
   }
 
+  const transition = useTransition();
+
+  if (transition.state === "loading") {
+    cleanup();
+  }
+
   return props.open ? (
-    <form
+    <Form
       method="post"
       className="bg-white border-red border-2 absolute py-1 px-2 rounded-md"
       style={{ top: props.locY, left: props.locX }}
     >
       <button
         className="bg-pink-300 mx-1 p-1 w-8 rounded inline-flex justify-center items-center text-center"
-        onClick={abort}
+        onClick={cleanup}
       >
         x
       </button>
@@ -49,7 +56,7 @@ function CommentForm(props: PropTypes) {
       <button className="bg-green-300 mx-1 p-1 rounded" type="submit">
         Add
       </button>
-    </form>
+    </Form>
   ) : null;
 }
 

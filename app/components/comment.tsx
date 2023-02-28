@@ -1,3 +1,5 @@
+import { Form } from "@remix-run/react";
+
 type PropTypes = {
   content: string;
   locX: number;
@@ -6,12 +8,14 @@ type PropTypes = {
 
 function comment(props: PropTypes) {
   return (
-    <div
-      className="bg-white border-black border-2 absolute py-1 px-2 rounded-md"
-      style={{ top: props.locY, left: props.locX }}
-    >
-      {props.content}
-    </div>
+    <Form method="post">
+      <div
+        className="bg-white border-black border-2 absolute py-1 px-2 rounded-md inline-flex gap-2"
+        style={{ top: props.locY, left: props.locX }}
+      >
+        {props.content}
+      </div>
+    </Form>
   );
 }
 
